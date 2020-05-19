@@ -1,0 +1,14 @@
+@keyframes myanimation
+{
+  from {
+    left: 0;
+  }
+  to {
+    left: 100%;
+  }
+}
+
+img#guac {
+  position: absolute;
+  animation: myanimation infinite 5s linear;
+}
