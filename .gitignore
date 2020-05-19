@@ -1,1 +1,11 @@
 node_modules
+public
+public/
+public/**
+dist
+dist/
+dist/**
+build
+build/
+build/**
+lambda-deps-layer.zip
