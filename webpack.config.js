@@ -43,6 +43,10 @@ module.exports = {
   plugins: [
     // deletes the public folder for fresh builds
     new CleanWebpackPlugin(['public']),
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+      chunkFilename: '[id].css',
+    }),
     new HtmlWebpackPlugin({
       title: 'Guacchain',
       filename: 'index.html',
@@ -51,8 +55,7 @@ module.exports = {
     new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/\*.js/]),
     new AssetsPlugin({
       filename: 'public/webpackAssets.json'
-    }),
-    new MiniCssExtractPlugin()
+    })
   ],
   // sets rules for processing different files being 'imported'
   // (or loaded) into js files
