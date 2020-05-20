@@ -1,6 +1,19 @@
 import React from 'react';
-import './App.css';
 import guacIMG from './guac.jpg';
+
+const rotate = keyframes`
+  from {
+    left: 0;
+  }
+  to {
+    left: 100%;
+  }
+`;
+
+const styledImg = styled.img`
+  position: absolute;
+  animation: ${rotate} infinite 5s linear;
+`
 
 const App = () => (
   <div>
