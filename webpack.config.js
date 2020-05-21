@@ -72,7 +72,7 @@ module.exports = {
         ]
       },
       {
-        test: /\.css$/i,
+        test: /\.css$/,
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
@@ -84,11 +84,16 @@ module.exports = {
         ]
       },
       {
-        test: /\.(png|svg|jpg|gif)$/,
+        test: /\.(png|jpg|gif)$/i,
         use: [
-          'file-loader',
-        ]
-      }
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 998192,
+            },
+          },
+        ],
+      },
     ]
   },
   resolve: {
