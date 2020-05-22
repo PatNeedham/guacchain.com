@@ -12,7 +12,8 @@ const devtool = prod ? 'eval-cheap-source-map' : 'eval-source-map';
 module.exports = {
   mode,
   entry: {
-    app: './src/client.js'
+    app: './src/client.js',
+    home: './src/components/pages/Home.js',
   },
   devtool,
   // determines the name and place for your output bundles
@@ -50,7 +51,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'Guacchain',
       filename: 'index.html',
-      favicon: './src/favicon.ico'
+      favicon: './src/favicon.ico',
+      template: './src/template.html'
     }),
     new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/\*.js/]),
     new AssetsPlugin({
@@ -72,7 +74,7 @@ module.exports = {
         ]
       },
       {
-        test: /\.css$/,
+        test: /\.css$/i,
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
@@ -84,15 +86,10 @@ module.exports = {
         ]
       },
       {
-        test: /\.(png|jpg|gif)$/i,
+        test: /\.(png|svg|jpg|gif)$/,
         use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 998192,
-            },
-          },
-        ],
+          'file-loader',
+        ]
       },
     ]
   },

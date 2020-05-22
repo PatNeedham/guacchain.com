@@ -1,4 +1,5 @@
 import React from 'react';
+import styled, { keyframes } from 'styled-components'
 import guacIMG from './guac.jpg';
 
 const rotate = keyframes`

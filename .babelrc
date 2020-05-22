@@ -12,6 +12,13 @@
   "plugins": [
     "syntax-dynamic-import",
     "@babel/plugin-proposal-export-default-from",
-    "transform-react-remove-prop-types"
+    "transform-react-remove-prop-types",
+    [
+      "transform-assets-import-to-string",
+      {
+        "baseDir": "/assets",
+        "baseUri": ""
+      }
+    ]
   ]
 }

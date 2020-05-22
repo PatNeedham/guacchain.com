@@ -16,7 +16,7 @@ export const mainHandler = (req, res) => {
   const reactDom = renderToString(jsx)
   const styles = sheet.getStyleTags()
   res.writeHead(200, { 'Content-Type': 'text/html' })
-  const responseStr = htmlTemplate(reactDom, styles)
+  const responseStr = htmlTemplate('<h1>Title</h1>', styles)
   res.end(responseStr)
 }
 
