@@ -7,7 +7,7 @@
     "start": "npx webpack && cp public/webpackAssets.json src/webpackAssets.json",
     "server": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "makeScriptsExecutable": "chmod +x ./scripts/buildServer.sh && chmod +x ./scripts/s3AssetDeploy.sh && chmod +x ./scripts/deployLambdaFunction.sh",
+    "makeScriptsExecutable": "chmod +x ./scripts/buildServer.sh && chmod +x ./scripts/s3AssetDeploy.sh && chmod +x ./scripts/deployLambdaFunction.sh && chmod +x ./scripts/publishDepsLayer.sh",
     "build": "rm -rf build && mkdir -p build && cp -r src/* build/ && cd build && zip -r function.zip ./",
     "build:server": "./scripts/buildServer.sh",
     "deploy": "./scripts/s3AssetDeploy.sh && ./scripts/deployLambdaFunction.sh"
