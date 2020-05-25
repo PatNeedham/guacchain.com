@@ -14,7 +14,7 @@ router.use(awsServerlessExpressMiddleware.eventContext())
 
 router.get('/*', mainHandler)
 
-app.use('/', router)
+app.use('*', router)
 
 const server = awsServerlessExpress.createServer(app)
 exports.handler = (event, context) => {
