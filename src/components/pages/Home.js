@@ -11,7 +11,7 @@ const rotate = keyframes`
   }
 `;
 
-const styledImg = styled.img`
+const StyledImg = styled.img`
   position: absolute;
   animation: ${rotate} infinite 5s linear;
 `
@@ -20,7 +20,7 @@ const App = () => (
   <div>
     <p>Guac Chain</p>
     <p>Freshly made guacamole, on the blockchain...</p>
-    <img id="guac" src={guacIMG} height={282} width={300} alt="guac" />
+    <StyledImg id="guac" src={guacIMG} height={282} width={300} alt="guac" />
   </div>
 );
 
