@@ -17,7 +17,8 @@
       "transform-assets-import-to-string",
       {
         "baseDir": "/assets",
-        "baseUri": "https://COMMIT_ID.guacchain.com"
+        "baseUri": "https://COMMIT_ID.guacchain.com",
+        "flatten": true
       }
     ]
   ]
