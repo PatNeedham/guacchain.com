@@ -10,7 +10,7 @@ const headerStyle = {
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
-  backgroundColor: 'lightgray'
+  backgroundColor: 'green'
 }
 
 const aTagStyle = {
