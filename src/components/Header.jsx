@@ -26,6 +26,7 @@ const Header = () => (
     <Link to="/" style={aTagStyle}>Home</Link>
     <Link to="/about" style={aTagStyle}>About</Link>
     <Link to="/subscribe" style={aTagStyle}>Subscibe</Link>
+    <Link to="/login" style={aTagStyle}>Log in</Link>
   </div>
 )
 
