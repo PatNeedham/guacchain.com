@@ -19,6 +19,10 @@ export default function Home() {
   const [workerHappiness, setWorkerHappiness] = useState(75);
   const [treeHealth, setTreeHealth] = useState(80);
 
+  // Conveyor system state
+  const [conveyorActive, setConveyorActive] = useState(false);
+  const [conveyorSpeed, setConveyorSpeed] = useState(3);
+
   // Economy and upgrades
   const [money, setMoney] = useState(100);
   const [upgrades, setUpgrades] = useState([
@@ -52,6 +56,14 @@ export default function Home() {
       price: 120,
       description: 'Trees with social media notifications and apps',
       icon: '📱',
+      purchased: false,
+    },
+    {
+      id: 'conveyor-system',
+      name: 'Blockchain Conveyor',
+      price: 150,
+      description: 'Automated avocado processing with literal blockchain technology',
+      icon: '🏭',
       purchased: false,
     },
     {
@@ -90,6 +102,11 @@ export default function Home() {
             setWorkerHappiness={setWorkerHappiness}
             treeHealth={treeHealth}
             setTreeHealth={setTreeHealth}
+            conveyorActive={conveyorActive}
+            setConveyorActive={setConveyorActive}
+            conveyorSpeed={conveyorSpeed}
+            setConveyorSpeed={setConveyorSpeed}
+            upgrades={upgrades}
           />
           
           <UpgradesStore
@@ -109,6 +126,8 @@ export default function Home() {
             wifiStorms={wifiStorms}
             treeHealth={treeHealth}
             upgrades={upgrades}
+            conveyorActive={conveyorActive}
+            conveyorSpeed={conveyorSpeed}
           />
         </div>
       </div>

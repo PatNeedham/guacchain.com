@@ -146,3 +146,66 @@ button:hover, [role="button"]:hover {
     grid-template-rows: 2fr 1fr;
   }
 }
+
+/* Conveyor belt animations */
+@keyframes conveyor-belt {
+  0% {
+    transform: translateX(-20px);
+  }
+  100% {
+    transform: translateX(20px);
+  }
+}
+
+@keyframes blockchain-link {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scaleX(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleX(1.1);
+  }
+}
+
+.conveyor-belt {
+  animation: conveyor-belt 2s linear infinite;
+}
+
+.blockchain-link {
+  animation: blockchain-link 1.5s ease-in-out infinite;
+}
+
+/* Mining progress animations */
+@keyframes mining-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px #10b981, 0 0 10px #10b981;
+  }
+  50% {
+    box-shadow: 0 0 10px #10b981, 0 0 20px #10b981, 0 0 30px #10b981;
+  }
+}
+
+.mining-glow {
+  animation: mining-glow 2s ease-in-out infinite;
+}
+
+/* NFT certificate popup */
+@keyframes nft-popup {
+  0% {
+    transform: scale(0) rotate(-180deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+.nft-popup {
+  animation: nft-popup 0.5s ease-out;
+}
