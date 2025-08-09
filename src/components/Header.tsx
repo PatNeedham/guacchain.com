@@ -1,6 +1,11 @@
 'use client';
 
-export default function Header() {
+interface HeaderProps {
+  currentView: 'farm' | 'laboratory';
+  onViewChange: (view: 'farm' | 'laboratory') => void;
+}
+
+export default function Header({ currentView, onViewChange }: HeaderProps) {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-green-800 shadow-lg">
       <div className="container mx-auto px-4 py-3">
@@ -8,11 +13,36 @@ export default function Header() {
           <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-white text-center flex-1">
             Guacchain: The Computer Game. Blockchain-AI powered Guacamole
           </h1>
+          
+          {/* Navigation Toggle */}
+          <div className="flex items-center space-x-2 mr-4">
+            <button
+              onClick={() => onViewChange('farm')}
+              className={`px-3 py-1 rounded text-sm font-medium transition-colors duration-300 ${
+                currentView === 'farm'
+                  ? 'bg-green-600 text-white'
+                  : 'bg-green-700 text-green-200 hover:bg-green-600 hover:text-white'
+              }`}
+            >
+              🚜 Farm
+            </button>
+            <button
+              onClick={() => onViewChange('laboratory')}
+              className={`px-3 py-1 rounded text-sm font-medium transition-colors duration-300 ${
+                currentView === 'laboratory'
+                  ? 'bg-green-600 text-white'
+                  : 'bg-green-700 text-green-200 hover:bg-green-600 hover:text-white'
+              }`}
+            >
+              🧪 Laboratory
+            </button>
+          </div>
+          
           <a
             href="https://github.com/PatNeedham/guacchain.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="ml-4 p-2 text-white hover:text-green-200 transition-colors duration-300"
+            className="p-2 text-white hover:text-green-200 transition-colors duration-300"
             title="View on GitHub"
           >
             <svg
