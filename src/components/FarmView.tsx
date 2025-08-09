@@ -1,5 +1,7 @@
 'use client';
 
+import ConveyorSystem from './ConveyorSystem';
+
 interface FarmViewProps {
   digitalFog: number;
   blockchainRain: boolean;
@@ -7,6 +9,8 @@ interface FarmViewProps {
   wifiStorms: number;
   treeHealth: number;
   upgrades: any[];
+  conveyorActive: boolean;
+  conveyorSpeed: number;
 }
 
 export default function FarmView({
@@ -16,6 +20,8 @@ export default function FarmView({
   wifiStorms,
   treeHealth,
   upgrades,
+  conveyorActive,
+  conveyorSpeed,
 }: FarmViewProps) {
   const getTreeColor = (health: number) => {
     if (health <= 33) return 'text-red-600';
@@ -151,6 +157,13 @@ export default function FarmView({
         <div>🌱 Farm Health: {Math.round((treeHealth + (hasQuantumFertilizer ? 20 : 0)) / 120 * 100)}%</div>
         <div>💰 Production: {Math.round(treeHealth * (hasWifiSprinklers ? 1.5 : 1))} GuacCoins/hr</div>
       </div>
+
+      {/* Conveyor System */}
+      <ConveyorSystem
+        isActive={conveyorActive}
+        speed={conveyorSpeed}
+        upgrades={upgrades}
+      />
 
       <style jsx>{`
         @keyframes fall {
