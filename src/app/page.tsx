@@ -6,8 +6,12 @@ import WeatherControls from '@/components/WeatherControls';
 import FarmControls from '@/components/FarmControls';
 import UpgradesStore from '@/components/UpgradesStore';
 import FarmView from '@/components/FarmView';
+import GuacamoleLaboratory from '@/components/GuacamoleLaboratory';
 
 export default function Home() {
+  // View state
+  const [currentView, setCurrentView] = useState<'farm' | 'laboratory'>('farm');
+  
   // Weather state
   const [digitalFog, setDigitalFog] = useState(0);
   const [blockchainRain, setBlockchainRain] = useState(false);
@@ -78,59 +82,69 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-sky-400 to-green-600">
-      <Header />
+      <Header currentView={currentView} onViewChange={setCurrentView} />
       
-      {/* Main Container */}
-      <div className="pt-16 h-screen grid grid-cols-1 lg:grid-cols-4 gap-4 p-4">
-        {/* Control Panel - Left sidebar on desktop, bottom on mobile */}
-        <div className="lg:col-span-1 order-2 lg:order-1 space-y-4 max-h-screen overflow-y-auto">
-          <WeatherControls
-            digitalFog={digitalFog}
-            setDigitalFog={setDigitalFog}
-            blockchainRain={blockchainRain}
-            setBlockchainRain={setBlockchainRain}
-            solarFlares={solarFlares}
-            setSolarFlares={setSolarFlares}
-            wifiStorms={wifiStorms}
-            setWifiStorms={setWifiStorms}
-          />
-          
-          <FarmControls
-            soilQuality={soilQuality}
-            setSoilQuality={setSoilQuality}
-            workerHappiness={workerHappiness}
-            setWorkerHappiness={setWorkerHappiness}
-            treeHealth={treeHealth}
-            setTreeHealth={setTreeHealth}
-            conveyorActive={conveyorActive}
-            setConveyorActive={setConveyorActive}
-            conveyorSpeed={conveyorSpeed}
-            setConveyorSpeed={setConveyorSpeed}
-            upgrades={upgrades}
-          />
-          
-          <UpgradesStore
+      {currentView === 'farm' ? (
+        /* Farm View - Original Layout */
+        <div className="pt-16 h-screen grid grid-cols-1 lg:grid-cols-4 gap-4 p-4">
+          {/* Control Panel - Left sidebar on desktop, bottom on mobile */}
+          <div className="lg:col-span-1 order-2 lg:order-1 space-y-4 max-h-screen overflow-y-auto">
+            <WeatherControls
+              digitalFog={digitalFog}
+              setDigitalFog={setDigitalFog}
+              blockchainRain={blockchainRain}
+              setBlockchainRain={setBlockchainRain}
+              solarFlares={solarFlares}
+              setSolarFlares={setSolarFlares}
+              wifiStorms={wifiStorms}
+              setWifiStorms={setWifiStorms}
+            />
+            
+            <FarmControls
+              soilQuality={soilQuality}
+              setSoilQuality={setSoilQuality}
+              workerHappiness={workerHappiness}
+              setWorkerHappiness={setWorkerHappiness}
+              treeHealth={treeHealth}
+              setTreeHealth={setTreeHealth}
+              conveyorActive={conveyorActive}
+              setConveyorActive={setConveyorActive}
+              conveyorSpeed={conveyorSpeed}
+              setConveyorSpeed={setConveyorSpeed}
+              upgrades={upgrades}
+            />
+            
+            <UpgradesStore
+              money={money}
+              setMoney={setMoney}
+              upgrades={upgrades}
+              setUpgrades={setUpgrades}
+            />
+          </div>
+
+          {/* Farm View - Central area */}
+          <div className="lg:col-span-3 order-1 lg:order-2 min-h-96 lg:min-h-full rounded-lg overflow-hidden shadow-lg">
+            <FarmView
+              digitalFog={digitalFog}
+              blockchainRain={blockchainRain}
+              solarFlares={solarFlares}
+              wifiStorms={wifiStorms}
+              treeHealth={treeHealth}
+              upgrades={upgrades}
+              conveyorActive={conveyorActive}
+              conveyorSpeed={conveyorSpeed}
+            />
+          </div>
+        </div>
+      ) : (
+        /* Laboratory View - Full Screen */
+        <div className="pt-16 h-screen">
+          <GuacamoleLaboratory
             money={money}
             setMoney={setMoney}
-            upgrades={upgrades}
-            setUpgrades={setUpgrades}
           />
         </div>
-
-        {/* Farm View - Central area */}
-        <div className="lg:col-span-3 order-1 lg:order-2 min-h-96 lg:min-h-full rounded-lg overflow-hidden shadow-lg">
-          <FarmView
-            digitalFog={digitalFog}
-            blockchainRain={blockchainRain}
-            solarFlares={solarFlares}
-            wifiStorms={wifiStorms}
-            treeHealth={treeHealth}
-            upgrades={upgrades}
-            conveyorActive={conveyorActive}
-            conveyorSpeed={conveyorSpeed}
-          />
-        </div>
-      </div>
+      )}
     </div>
   );
 }
